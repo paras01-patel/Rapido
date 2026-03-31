@@ -1,20 +1,12 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% block title %}
     <title>Django Project</title>
     {% endblock title %}
 
-    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
-    {% block css %}{% endblock css %}
-
+    {% block css %} {% endblock css %}
     <style>
         body {
             margin: 0;
@@ -27,240 +19,203 @@
             color: black;
             padding: 15px 30px;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
+            align-items: center;
+            gap: 120px;
         }
-header h2 {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1px;
-  font-weight: 700;
 
-  background: #FFD400;   
-  color: black;        
+        header h2 {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            font-weight: 700;
+            background: #FFD400;   
+            color: black;        
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+        }
 
-  padding: 6px 14px;
-  border-radius: 20px;
-
-  display: inline-block;
-}
         nav a {
-            color:black;
+            color: black;
             text-decoration: none;
             margin-left: 25px;
             font-weight: 400;
-            
-            
         }
 
         nav a:hover {
             text-decoration: underline;
-            margin-top: 5px;
         }
 
         .container {
             padding: 20px;
+            margin-bottom: 100px; /* footer ke liye space */
         }
 
         footer {
-            background:black;
+            background: black;
             color: white;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px 10px;
         }
-        .main{
-            justify-content:center;
+
+        /* Footer Flex */
+        footer .main {
             display: flex;
-            gap: 60px;
-            margin: 40px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
         }
-        .child3{
-            margin: 40px;
-            font-size:14px;
+
+        .playstore {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #000;
+            padding: 5px 10px;
+            border-radius: 10px;
+            width: fit-content;
+            cursor: pointer;
+            border: 1px solid #fff;
+        }
+
+        .playstore p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        .playstore h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .child3, .div4, .div5 {
+            font-size: 14px;
             line-height: 1.7;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .img4 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .light-line {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 10px 0;
+        }
+
+        .last p {
+            font-size: small;
+            margin: 0;
+        }
+        .playstore{
+            margin: 20px;
             
         }
-    img {
-        width: 50px;       
-        height: 50px;
-        border-radius: 50%;  
-        object-fit: cover;  
-    }
-    .img4{
-    width: 50px;       
-        height: 50px;
-        border-radius: 50%;  
-        object-fit: cover;  
-    }
 
-
-.playstore {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  background: #000;
-  padding: 5px 10px;
-  border-radius: 10px;
-  width: fit-content;
-  cursor: pointer;
-  border: 1px solid #fff;
-  margin: 30px;   /* ✅ white border */
-}
-
-.playstore p {
-  margin: 0;
-  font-size: 12px;
-}
-
-.playstore h4 {
-  margin: 0;
-  font-size: 16px;
-}
-
-
-.div4{
-    margin: 40px;
-    font-size:14px;
-    line-height: 1.7;
-}
-.div5{
-    margin: 20px;
-    font-size:14px;
-    line-height: 1.7;
-}
-.light-line {
-    border: none;              /* default border hatao */
-    height: 1px;
-    background: rgba(255, 255, 255, 0.3); /* light color */
-    margin: 10px 0;
-}
-.last{
-    margin: 30px;
-}
-.last p{
-    font-size: small;
-}
     </style>
-</head>
-
-<body>
-
-    
+   
+    <!-- Header -->
     <header>
-        <h2> Rapido</h2>
+        <h2>Rapido</h2>
         <nav>
             <a href="{% url 'home' %}">Home</a>
-            <a href="">AboutUs</a>
-            <a href="">Safety</a>
-            <a href="">Careers</a>
-            <a href="">log</a>
-            <a href="">Press</a>
-            <a href="">ContactUs</a>
-
-            
+            <a href="#">About Us</a>
+            <a href="#">Safety</a>
+            <a href="#">Careers</a>
+            <a href="#">Log</a>
+            <a href="#">Press</a>
+            <a href="#">Contact Us</a>
         </nav>
     </header>
 
+    <!-- Content Block -->
     <div class="container">
         {% block content %}
         {% endblock content %}
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="main">
             <div class="chi">
-                <h3>Customer app</h3>
+                <h3>Customer App</h3>
                 <div class="playstore">
+                    <img src="{% static 'img/playstore.jpg' %}" alt="logo">
                     <div>
-                        <img src="{% static 'img/playstore.jpg' %}" alt="logo">
-                    </div>
-                    <div>
-                        <p>GET IN ON </p>
-                        <H4>Google Play</H4>
+                        <p>GET IN ON</p>
+                        <h4>Google Play</h4>
                     </div>
                 </div>
                 <div class="playstore">
+                    <img src="{% static 'img/1.webp' %}" alt="logo">
                     <div>
-                        <img src="{% static 'img/1.webp' %}" alt="logo">
-                    </div>
-                    <div>
-                        <p>download on the</p>
-                        <H4>App Store</H4>
-                    </div>
-                </div>
-                <div></div>
-            </div>
-            <div>
-                    <h3>Captain app</h3>
-                <div class="playstore">
-                    
-                    <div>
-                        <img src="{% static 'img/playstore.jpg' %}" alt="logo">
-                    </div>
-                    <div>
-                        <p>GET IN ON </p>
-                        <H4>Google Play</H4>
+                        <p>DOWNLOAD ON THE</p>
+                        <h4>App Store</h4>
                     </div>
                 </div>
             </div>
 
-            <div class="child3"> 
-                <p>
+            <div>
+                <h3>Captain App</h3>
+                <div class="playstore">
+                    <img src="{% static 'img/playstore.jpg' %}" alt="logo">
+                    <div>
+                        <p>GET IN ON</p>
+                        <h4>Google Play</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="child3">
                 Home <br>
-                About <br>Us <br>
-                Safety   <br>
-                Careers  <br>
-                Privacy   <br>
-                Policy    <br>
-                </p>
+                About Us <br>
+                Safety <br>
+                Careers <br>
+                Privacy <br>
+                Policy
             </div>
 
             <div class="div4">
-                Customer <br> 
-                Bike Taxi
-                Terms -         <br>
                 Customer <br>
-                Terms -<br>
-                Cabs and<br>
-                Auto<br>
-                Corporate <br>
-                Affairs
+                Bike Taxi Terms <br>
+                Customer Terms <br>
+                Cabs and Auto <br>
+                Corporate Affairs
             </div>
+
             <div class="div5">
-                Captain <br>
-                Terms - <br>
-                Bike <br>
-                Taxi<br>
-                Captain<br>
-                Terms - <br>
-                Cabs <br>
-                and <br>
-                Auto<br>
-                Blog<br>
-                Press<br>
+                Captain Terms <br>
+                Bike Taxi <br>
+                Captain Terms <br>
+                Cabs and Auto <br>
+                Blog <br>
+                Press
             </div>
+
             <div>
                 <h3>Follow Us</h3>
                 <img src="{% static 'img/logo.svg' %}" alt="logo">
                 <img src="{% static 'img/insta.png' %}" alt="logo">
                 <img src="{% static 'img/link.jpg' %}" alt="logo">
                 <img src="{% static 'img/images.png' %}" alt="logo" class="img4">
-                
-
             </div>
-            
         </div>
-            <hr class="light-line">
+
+        <hr class="light-line">
+
         <div class="last">
-        <p>
-        © 2026 Roppen Transportation. All rights reserved.
-        </p>
-
+            <p>© 2026 Roppen Transportation. All rights reserved.</p>
         </div>
-    
     </footer>
-
-</body>
-</html>
