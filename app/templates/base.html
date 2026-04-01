@@ -128,20 +128,26 @@
    
     <!-- Header -->
     <header>
-        <h2>Rapido</h2>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Safety</a>
-            <a href="#">Careers</a>
-            <a href="#">Log</a>
-            <a href="#">Press</a>
-            <a href="#">Contact Us</a>
+    <h2>Rapido</h2>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Safety</a>
+        <a href="#">Careers</a>
+        <a href="#">Log</a>
+        <a href="#">Press</a>
+        <a href="#">Contact Us</a>
+
+        {% if request.session.username %}
+            <!-- Agar user login hai -->
+            <a href="{% url 'home' %}"> hii, {{ request.session.username }}</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <!-- Agar user login nahi hai -->
             <a href="{% url 'sign' %}">Sign</a>
-
-        </nav>
-    </header>
-
+        {% endif %}
+    </nav>
+</header>
     <!-- Content Block -->
     <div class="container">
         {% block content %}

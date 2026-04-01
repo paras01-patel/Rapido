@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+/* Wrapper same as signup */
+.login-wrapper {
+    background: linear-gradient(135deg, #ff6b00, #ff9f43);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Same box */
+.container {
+    width: 360px;
+    padding: 35px 30px;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+
+/* Inputs same */
+.container input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.container input:focus {
+    border-color: #ff6b00;
+    box-shadow: 0 0 5px rgba(255,107,0,0.3);
+}
+
+/* Button same */
+.container button {
+    width: 100%;
+    padding: 12px;
+    background: #ff6b00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.container button:hover {
+    background: #e65c00;
+}
+
+/* Message */
+.msg {
+    background: #ffe6e6;
+    color: red;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* Link */
+.link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #ff6b00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+</style>
+
+<div class="login-wrapper">
+    <div class="container">
+
+        <h2>Login</h2>
+
+        {% if error %}
+            <p class="msg">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Same style, bas fields change -->
+            <input type="text" name="username" placeholder="Enter Username" required>
+
+            <input type="password" name="password" placeholder="Enter Password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="link">
+            Don't have an account? <a href="{% url 'sign' %}">Sign Up</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

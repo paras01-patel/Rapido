@@ -4,38 +4,83 @@ from django.contrib import messages
 from .models import Profile
 
 
-def home(req):
-    return render(req,'home.html')
+def home(request):
+    username = request.session.get('username')  # session se username le lo
 
+    if not username:
+        return redirect('login')  # agar login nahi hai
 
+    return render(request, 'home.html', {"username": username})
+
+# 📝 Signup
 def sign(request):
     if request.method == "POST":
         username = request.POST.get("username")
         phone = request.POST.get("phone")
         password = request.POST.get("password")
 
-        if len(phone) != 10:
-            messages.error(request, "Enter valid 10 digit mobile number")
+        # ❌ empty check
+        if not username or not phone or not password:
+            messages.error(request, "All fields are required")
             return redirect("sign")
 
+        # ❌ phone check
+        if not phone.isdigit() or len(phone) != 10:
+            messages.error(request, "Enter valid 10 digit number")
+            return redirect("sign")
+
+        # ❌ username exist
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists")
             return redirect("sign")
 
+        # ❌ phone exist
         if Profile.objects.filter(phone=phone).exists():
-            messages.error(request, "Mobile number already registered")
+            messages.error(request, "Mobile already registered")
             return redirect("sign")
 
-        # Create user
+        # ✅ create user
         user = User.objects.create_user(
             username=username,
             password=password
         )
 
-        # Save phone
+        # ✅ save phone
         Profile.objects.create(user=user, phone=phone)
 
-        messages.success(request, "Account Created Successfully")
+        messages.success(request, "Account created successfully")
         return redirect("login")
 
-    return render(request, "signup.html")
+    return render(request, "sign.html")
+
+
+# 🔐 Login
+def login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        # empty check
+        if not username or not password:
+            return render(request, "login.html", {"error": "All fields required"})
+
+        user = User.objects.filter(username=username).first()
+
+        # check user + password
+        if user and user.check_password(password):
+
+            # 👉 SESSION LOGIN (manual)
+            request.session['user_id'] = user.id
+            request.session['username'] = user.username
+
+            return redirect('home')
+        else:
+            return render(request, "login.html", {"error": "Invalid details"})
+
+    return render(request, "login.html")
+
+
+
+def logout(request):
+    request.session.flush()  # session clear
+    return redirect('sign')
