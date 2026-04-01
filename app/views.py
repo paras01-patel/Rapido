@@ -12,6 +12,9 @@ def home(request):
 
     return render(request, 'home.html', {"username": username})
 
+def about(request):
+    return render(request, 'about.html')
+
 # 📝 Signup
 def sign(request):
     if request.method == "POST":

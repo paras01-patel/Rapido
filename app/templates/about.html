@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>About Rapido</title>
+{% endblock title %}
+
+{% block css %}
+<style>
+/* About Page Container */
+.about-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(250, 135, 21, 0.15);
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Heading */
+.about-container h1 {
+    font-size: 48px;
+    color: #FA8715;
+    margin-bottom: 20px;
+}
+
+/* Subheading */
+.about-container h3 {
+    font-size: 22px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Paragraph */
+.about-container p {
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* Feature Boxes */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature-box {
+    flex: 1 1 250px;
+    background-color: #FAF5F0;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(250, 135, 21, 0.2);
+}
+
+.feature-box img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.feature-box h4 {
+    font-size: 20px;
+    color: #FA8715;
+    margin-bottom: 10px;
+}
+
+.feature-box p {
+    font-size: 16px;
+    color: #555555;
+}
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="about-container">
+    <h1>About Rapido</h1>
+    <h3>Fast, Reliable, and Affordable Bike Rides</h3>
+    <p>
+        Rapido is India's leading bike taxi service, making daily commuting fast, safe, and convenient. 
+        With just a few taps on our app, you can book a ride, track your driver, and reach your destination quickly. 
+        Our mission is to make city travel easy, affordable, and eco-friendly.
+    </p>
+
+    <div class="features">
+        <div class="feature-box">
+            <img src="{% static 'img/fast.png' %}" alt="Fast Rides">
+            <h4>Fast Rides</h4>
+            <p>Get to your destination quickly without waiting in traffic.</p>
+        </div>
+        <div class="feature-box">
+            <img src="{% static 'img/safe.png' %}" alt="Safe Rides">
+            <h4>Safe & Secure</h4>
+            <p>All riders are verified, ensuring a safe travel experience.</p>
+        </div>
+        <div class="feature-box">
+            <img src="{% static 'img/affordable.png' %}" alt="Affordable">
+            <h4>Affordable</h4>
+            <p>Low fares make commuting accessible to everyone.</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
