@@ -170,7 +170,7 @@
         <a href="#">Careers</a>
         <a href="#">Log</a>
         <a href="#">Press</a>
-        <a href="#">Contact Us</a>
+        <a href="{% url 'contact' %}">Contact Us</a>
 
 {% if request.session.username %}
     <a href="{% url 'home' %}" class="user-name">👋 Hello,{{ request.session.username }}</a>

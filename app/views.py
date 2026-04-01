@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import Profile
+from .models import Profile,Contact
 
 
 def home(request):
@@ -14,6 +14,27 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def contact(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message_text = request.POST.get('message')
+
+        # ✅ DATABASE SAVE
+        Contact.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            message=message_text
+        )
+
+        messages.success(request, "Your message has been sent successfully!")
+        return redirect('contact')   # refresh issue avoid
+
+    return render(request, 'contact.html')
 
 # 📝 Signup
 def sign(request):
