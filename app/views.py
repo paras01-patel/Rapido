@@ -36,6 +36,9 @@ def contact(request):
 
     return render(request, 'contact.html')
 
+def blog(req):
+    return render(req,'blog.html')
+
 # 📝 Signup
 def sign(request):
     if request.method == "POST":
