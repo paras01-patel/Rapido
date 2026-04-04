@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<style>
+
+/* HERO SECTION */
+.hero {
+    background: #ffcc00;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* PRESS CONTAINER */
+.press-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+/* GRID */
+.press-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* CARD */
+.press-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.press-card:hover {
+    transform: translateY(-5px);
+}
+
+/* IMAGE */
+.press-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* CONTENT */
+.press-content {
+    padding: 15px;
+}
+
+.press-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.press-content p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* BUTTON */
+.read-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #ffcc00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px){
+    .press-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px){
+    .press-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Press & News</h1>
+    <p>Latest updates, media coverage & announcements</p>
+</div>
+
+<!-- PRESS -->
+<div class="press-container">
+
+    <div class="press-grid">
+
+        <!-- CARD 1 -->
+        <div class="press-card">
+            <img src="{% static 'img/p1.jpg' %}">
+            <div class="press-content">
+                <h3>Rapido expands to 50+ cities</h3>
+                <p>India's fastest growing bike taxi platform now available in more locations.</p>
+                <a href="#" class="read-btn">Read More →</a>
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="press-card">
+            <img src="{% static 'img/p2.jpg' %}">
+            <div class="press-content">
+                <h3>New safety features launched</h3>
+                <p>Rapido introduces new safety tools for riders and captains.</p>
+                <a href="#" class="read-btn">Read More →</a>
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="press-card">
+            <img src="{% static 'img/p3.jpg' %}">
+            <div class="press-content">
+                <h3>Funding round success</h3>
+                <p>Rapido secures new funding to expand operations.</p>
+                <a href="#" class="read-btn">Read More →</a>
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="press-card">
+            <img src="{% static 'img/p4.jpg' %}">
+            <div class="press-content">
+                <h3>Electric rides launched</h3>
+                <p>Eco-friendly rides now available in major cities.</p>
+                <a href="#" class="read-btn">Read More →</a>
+            </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="press-card">
+            <img src="{% static 'img/p5.jpg' %}">
+            <div class="press-content">
+                <h3>Driver earnings increased</h3>
+                <p>Rapido improves captain income opportunities.</p>
+                <a href="#" class="read-btn">Read More →</a>
+            </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="press-card">
+            <img src="{% static 'img/p6.jpg' %}">
+            <div class="press-content">
+                <h3>Customer milestone reached</h3>
+                <p>10 million+ users trust Rapido for daily rides.</p>
+                <a href="#" class="read-btn">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
