@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<style>
+
+/* HERO */
+.career-hero {
+    background: #ffcc00;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.career-hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.career-hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* WHY JOIN */
+.why {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.why h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.why-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* JOB SECTION */
+.jobs {
+    padding: 60px 20px;
+    background: #f9f9f9;
+}
+
+.jobs h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.job-list {
+    max-width: 900px;
+    margin: auto;
+}
+
+.job {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job h3 {
+    margin: 0;
+}
+
+.apply-btn {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.cta h2 {
+    margin-bottom: 20px;
+}
+
+.cta button {
+    background: black;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: none;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="career-hero">
+    <h1>Join Rapido 🚀</h1>
+    <p>Be part of India's fastest growing ride platform</p>
+</div>
+
+<!-- WHY JOIN -->
+<div class="why">
+    <h2>Why Join Us?</h2>
+
+    <div class="why-box">
+        <div class="card">
+            <h3>Growth 📈</h3>
+            <p>Fast career growth opportunities</p>
+        </div>
+
+        <div class="card">
+            <h3>Culture ❤️</h3>
+            <p>Friendly and innovative environment</p>
+        </div>
+
+        <div class="card">
+            <h3>Impact 🌍</h3>
+            <p>Work on real-world problems</p>
+        </div>
+    </div>
+</div>
+
+<!-- JOBS -->
+<div class="jobs">
+    <h2>Open Positions</h2>
+
+    <div class="job-list">
+
+        <div class="job">
+            <div>
+                <h3>Frontend Developer</h3>
+                <p>Bangalore | Full Time</p>
+            </div>
+            <button class="apply-btn">Apply</button>
+        </div>
+
+        <div class="job">
+            <div>
+                <h3>Backend Developer</h3>
+                <p>Remote | Full Time</p>
+            </div>
+            <button class="apply-btn">Apply</button>
+        </div>
+
+        <div class="job">
+            <div>
+                <h3>Marketing Executive</h3>
+                <p>Delhi | Full Time</p>
+            </div>
+            <button class="apply-btn">Apply</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <h2>Didn't find your role?</h2>
+    <button>Send Resume</button>
+</div>
+
+{% endblock %}

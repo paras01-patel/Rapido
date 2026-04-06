@@ -43,6 +43,10 @@ def blog(req):
 def press(req):
     return render(req,'press.html')
 
+def career(req):
+    return render(req,'career.html')
+1   
+
 # 📝 Signup
 def sign(request):
     if request.method == "POST":
