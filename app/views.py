@@ -119,3 +119,6 @@ def login(request):
 def logout(request):
     request.session.flush()  # session clear
     return redirect('sign')
+
+def admin_dashboard(req):
+    return render(req,'admin_dashboard.html')

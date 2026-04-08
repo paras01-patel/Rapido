@@ -30,6 +30,8 @@ urlpatterns = [
     path("/sign",views.sign,name='sign'),
     path("/login",views.login,name='login'),
     path("/logout",views.logout,name='logout'),
+    path("/admin_dashboard",views.admin_dashboard,name='admin_dashboard'),
+    
     
     
     

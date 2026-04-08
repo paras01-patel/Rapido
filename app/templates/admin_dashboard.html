@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<style>
+
+/* Layout */
+.dashboard {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #000;
+    color: #fff;
+    position: fixed;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: #ffcc00;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 16px;
+}
+
+.sidebar a:hover {
+    color: #ffcc00;
+}
+
+/* Main Content */
+.main {
+    margin-left: 240px;
+    padding: 30px;
+    width: 100%;
+}
+
+/* Top Bar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 {
+    font-size: 28px;
+}
+
+.logout {
+    background: #ffcc00;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    flex: 1;
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #555;
+}
+
+.card h2 {
+    margin-top: 10px;
+    color: #000;
+}
+
+/* Table */
+.table {
+    margin-top: 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background: #ffcc00;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Rapido Admin</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Users</a>
+        <a href="#">Rides</a>
+        <a href="#">Earnings</a>
+        <a href="#">Settings</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <!-- Topbar -->
+        <div class="topbar">
+            <h1>Dashboard</h1>
+            <a href="{% url 'logout' %}" class="logout">Logout</a>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards">
+            <div class="card">
+                <h3>Total Users</h3>
+                <h2>{{ total_users }}</h2>
+            </div>
+
+            <div class="card">
+                <h3>Total Rides</h3>
+                <h2>{{ total_rides }}</h2>
+            </div>
+
+            <div class="card">
+                <h3>Total Earnings</h3>
+                <h2>₹ {{ total_earnings }}</h2>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table">
+            <h3>Recent Rides</h3>
+            <table>
+                <tr>
+                    <th>User</th>
+                    <th>Pickup</th>
+                    <th>Drop</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for ride in rides %}
+                <tr>
+                    <td>{{ ride.user }}</td>
+                    <td>{{ ride.pickup }}</td>
+                    <td>{{ ride.drop }}</td>
+                    <td>{{ ride.status }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
