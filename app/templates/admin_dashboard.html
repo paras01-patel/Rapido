@@ -4,6 +4,12 @@
 {% block css %}
 <style>
 
+/* Google Font */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fb;
+}
+
 /* Layout */
 .dashboard {
     display: flex;
@@ -11,34 +17,39 @@
 
 /* Sidebar */
 .sidebar {
-    width: 220px;
+    width: 240px;
     height: 100vh;
-    background: #000;
+    background: #0f172a;
     color: #fff;
     position: fixed;
-    padding: 20px;
+    padding: 25px 20px;
 }
 
 .sidebar h2 {
     color: #ffcc00;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    font-size: 22px;
 }
 
 .sidebar a {
     display: block;
-    color: #fff;
+    color: #cbd5e1;
     text-decoration: none;
     margin: 15px 0;
-    font-size: 16px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
 .sidebar a:hover {
-    color: #ffcc00;
+    background: #ffcc00;
+    color: #000;
 }
 
 /* Main Content */
 .main {
-    margin-left: 240px;
+    margin-left: 260px;
     padding: 30px;
     width: 100%;
 }
@@ -48,19 +59,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .topbar h1 {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .logout {
     background: #ffcc00;
-    padding: 10px 15px;
+    padding: 10px 18px;
     border-radius: 8px;
     text-decoration: none;
     color: #000;
-    font-weight: bold;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.logout:hover {
+    background: #000;
+    color: #ffcc00;
 }
 
 /* Cards */
@@ -72,28 +93,41 @@
 
 .card {
     flex: 1;
-    background: #fff;
+    background: linear-gradient(135deg, #ffffff, #f1f5f9);
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .card h3 {
-    font-size: 18px;
-    color: #555;
+    font-size: 16px;
+    color: #64748b;
 }
 
 .card h2 {
     margin-top: 10px;
-    color: #000;
+    color: #0f172a;
+    font-size: 26px;
 }
 
 /* Table */
 .table {
     margin-top: 40px;
     background: #fff;
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.table h3 {
+    margin-bottom: 20px;
 }
 
 .table table {
@@ -102,13 +136,39 @@
 }
 
 .table th, .table td {
-    padding: 12px;
+    padding: 14px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
 
 .table th {
     background: #ffcc00;
+    color: #000;
+    border-radius: 5px;
+}
+
+.table tr {
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.table tr:hover {
+    background: #f9fafb;
+}
+
+/* Status Colors */
+.status-success {
+    color: green;
+    font-weight: 600;
+}
+
+.status-pending {
+    color: orange;
+    font-weight: 600;
+}
+
+.status-cancel {
+    color: red;
+    font-weight: 600;
 }
 
 </style>
@@ -121,11 +181,11 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <h2>Rapido Admin</h2>
-        <a href="#">Dashboard</a>
-        <a href="#">Users</a>
-        <a href="#">Rides</a>
-        <a href="#">Earnings</a>
-        <a href="#">Settings</a>
+        <a href="#">📊 Dashboard</a>
+        <a href="#">👤 Users</a>
+        <a href="#">🚕 Rides</a>
+        <a href="#">💰 Earnings</a>
+        <a href="#">⚙ Settings</a>
     </div>
 
     <!-- Main -->
@@ -139,6 +199,7 @@
 
         <!-- Cards -->
         <div class="cards">
+
             <div class="card">
                 <h3>Total Users</h3>
                 <h2>{{ total_users }}</h2>
@@ -153,11 +214,13 @@
                 <h3>Total Earnings</h3>
                 <h2>₹ {{ total_earnings }}</h2>
             </div>
+
         </div>
 
         <!-- Table -->
         <div class="table">
             <h3>Recent Rides</h3>
+
             <table>
                 <tr>
                     <th>User</th>
@@ -171,7 +234,16 @@
                     <td>{{ ride.user }}</td>
                     <td>{{ ride.pickup }}</td>
                     <td>{{ ride.drop }}</td>
-                    <td>{{ ride.status }}</td>
+
+                    <td>
+                        {% if ride.status == "Completed" %}
+                            <span class="status-success">Completed</span>
+                        {% elif ride.status == "Pending" %}
+                            <span class="status-pending">Pending</span>
+                        {% else %}
+                            <span class="status-cancel">Cancelled</span>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
 
@@ -179,7 +251,6 @@
         </div>
 
     </div>
-
 </div>
 
 {% endblock %}

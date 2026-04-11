@@ -171,6 +171,8 @@
         <a href="{% url 'blog' %}">Blog</a>
         <a href="{% url 'press' %}">Press</a>
         <a href="{% url 'contact' %}">Contact Us</a>
+        <a href="{% url 'admin_dashboard' %}">Contact Us</a>
+
 
 {% if request.session.username %}
     <a href="{% url 'home' %}" class="user-name">👋 Hello,{{ request.session.username }}</a>
