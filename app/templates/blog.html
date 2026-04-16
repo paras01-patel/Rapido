@@ -1,256 +1,194 @@
-{% extends "base.html" %}
-{% load static %}
 {% block css %}
 <style>
 
+/* GOOGLE FONT */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6fb;
+    margin: 0;
+}
+
 /* HERO */
 .hero {
-    background: #ffcc00;
-    padding: 100px 20px;
+    background: linear-gradient(135deg, #ffcc00, #ffdb4d);
+    padding: 120px 20px;
     text-align: center;
 }
 
 .hero h1 {
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 55px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #333;
 }
 
 /* CONTAINER */
 .container {
-    max-width: 1100px;
-    margin: 60px auto;
+    max-width: 1150px;
+    margin: 70px auto;
     padding: 0 20px;
 }
 
 /* FEATURED */
 .featured {
     display: flex;
-    gap: 30px;
+    gap: 40px;
     align-items: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .featured img {
     width: 50%;
     border-radius: 12px;
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
 .featured img:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .text h2 {
-    font-size: 28px;
+    font-size: 30px;
+    margin: 10px 0;
 }
 
-/* CATEGORY TAG */
+.text p {
+    color: #555;
+}
+
+/* TAG */
 .tag {
     display: inline-block;
     background: black;
     color: white;
     font-size: 12px;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 20px;
 }
 
 /* BUTTON */
 button {
     background: black;
     color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px 25px;
+    border-radius: 30px;
     border: none;
-    margin-top: 10px;
+    margin-top: 15px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 button:hover {
     background: #333;
+    transform: translateY(-2px);
+}
+
+/* SECTION TITLE */
+.section-title {
+    font-size: 34px;
+    margin-bottom: 35px;
+    text-align: center;
 }
 
 /* GRID */
-.section-title {
-    font-size: 32px;
-    margin-bottom: 30px;
-}
-
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
 }
 
+/* CARD */
 .card {
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.4s;
+    position: relative;
 }
 
 .card img {
     width: 100%;
-    height: 180px;
+    height: 190px;
     object-fit: cover;
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
 .card:hover img {
-    transform: scale(1.05);
-}
-
-.img-text {
-    font-size: 14px;
-    color: #666;
-    padding: 10px 15px;
-    line-height: 1.6;
-}
-
-.read-time {
-    font-size: 12px;
-    color: gray;
-    padding: 0 15px;
+    transform: scale(1.08);
 }
 
 .card h3 {
-    padding: 10px 15px;
-    font-size: 18px;
+    padding: 15px;
+    font-size: 19px;
 }
 
 .card p {
     padding: 0 15px 15px;
     color: #555;
+    font-size: 14px;
 }
 
+.img-text {
+    font-size: 13px;
+    color: #777;
+    padding: 12px 15px;
+    line-height: 1.6;
+}
+
+.read-time {
+    font-size: 12px;
+    color: #999;
+    padding: 0 15px;
+}
+
+/* CARD HOVER */
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px);
 }
 
 /* CTA */
 .cta {
-    background: black;
+    background: linear-gradient(135deg, #000, #222);
     color: white;
     text-align: center;
-    padding: 80px;
+    padding: 90px 20px;
+    margin-top: 60px;
+}
+
+.cta h2 {
+    font-size: 36px;
 }
 
 .cta button {
     background: #ffcc00;
     color: black;
+    font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+    .featured {
+        flex-direction: column;
+    }
+
+    .featured img {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
 }
 
 </style>
-{% endblock %}
-
-{% block content %}
-
-<div class="hero">
-    <h1>Rapido Blog</h1>
-    <p>Latest stories, updates & tips</p>
-</div>
-
-<div class="container featured">
-    <img src="{% static 'img/images.png' %}" alt="">
-    <div class="text">
-        <p class="tag">Mobility</p>
-        <h2>How Rapido is changing daily travel</h2>
-        <p>Fast, affordable and reliable rides for everyone in India.</p>
-        <button>Read More</button>
-    </div>
-</div>
-
-<div class="container">
-    <h2 class="section-title">Latest Articles</h2>
-
-    <div class="grid">
-
-        <!-- 1 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Bike taxi is one of the fastest ways to travel in city traffic. It helps you avoid long jams and reach your destination on time. With affordable pricing, it is suitable for daily commuters. Rapido provides trained captains for a smooth experience. It is a smart and time-saving travel solution.</p>
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Top 5 benefits of bike taxi</h3>
-            <p>Save time in traffic and reach faster.</p>
-        </div>
-
-        <!-- 2 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Earning with Rapido gives you flexibility to work anytime. You can choose your own working hours without pressure. It provides a steady income opportunity for riders. Easy onboarding process makes it simple to start. A great way to earn extra money daily.</p>
-            <p class="read-time">⏱ 3 min read</p>
-            <h3>Earn with Rapido</h3>
-            <p>Flexible income opportunity.</p>
-        </div>
-
-        <!-- 3 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Safety is a top priority in every Rapido ride. All captains go through strict verification process. Live tracking allows real-time monitoring of your trip. Emergency button ensures quick help when needed. Ride sharing keeps your family informed.</p>
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Safety features explained</h3>
-            <p>Know how we keep you secure.</p>
-        </div>
-
-        <!-- 4 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Rapido helps you travel quickly even in heavy traffic areas. It reduces travel time and increases productivity. Affordable pricing makes it accessible for everyone. Smooth riding experience ensures comfort. A perfect choice for city commuters.</p>
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Fastest way to travel</h3>
-            <p>Reach your destination quickly.</p>
-        </div>
-
-        <!-- 5 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Bike taxis are eco-friendly compared to cars. They consume less fuel and reduce pollution. Help in decreasing traffic congestion in cities. A smart step towards sustainable transport. Good for both users and environment.</p>
-            <p class="read-time">⏱ 3 min read</p>
-            <h3>Eco-friendly rides</h3>
-            <p>Travel with less pollution.</p>
-        </div>
-
-        <!-- 6 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Rapido ensures riders get trained and verified captains. Background checks increase safety standards. Riders feel secure during the journey. Support team is always available for help. Safe and trusted travel platform.</p>
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Trusted captains</h3>
-            <p>Ride with verified drivers.</p>
-        </div>
-
-        <!-- 7 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">You can easily book rides using mobile app. Simple interface makes booking fast. Multiple payment options available. No long waiting time for rides. Hassle-free experience for users.</p>
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Easy booking system</h3>
-            <p>Book rides in seconds.</p>
-        </div>
-
-        <!-- 8 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Rapido provides affordable pricing for daily travel. It is cheaper than many other transport options. Ideal for students and office workers. Saves money on daily commute. Budget-friendly travel solution.</p>
-            <p class="read-time">⏱ 3 min read</p>
-            <h3>Affordable pricing</h3>
-            <p>Save money on travel.</p>
-        </div>
-
-        <!-- 9 -->
-        <div class="card">
-            <img src="{% static 'img/images.png' %}">
-            <p class="img-text">Daily commuting becomes easier with Rapido services. No need to worry about traffic delays. Helps you reach office or college on time. Reliable service for everyday use. Makes life simple and stress-free.</p>
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Daily commute solution</h3>
-            <p>Make travel stress-free.</p>
-        </div>
-
-    </div>
-</div>
-
-<div class="cta">
-    <h2>Start Riding with Rapido</h2>
-    <button>Book Now</button>
-</div>
-
 {% endblock %}
