@@ -6,102 +6,119 @@
 
 /* HERO */
 .career-hero {
-    background: #ffcc00;
-    padding: 100px 20px;
+    background: linear-gradient(135deg, #ffcc00, #ffd633);
+    padding: 120px 20px;
     text-align: center;
 }
 
-.career-hero h1 {
-    font-size: 48px;
-    font-weight: bold;
-}
-
-.career-hero p {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-/* WHY JOIN */
+/* WHY */
 .why {
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
-}
-
-.why h2 {
-    font-size: 32px;
-    margin-bottom: 30px;
 }
 
 .why-box {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .card {
-    width: 250px;
-    padding: 20px;
-    border-radius: 12px;
+    width: 260px;
+    padding: 25px;
+    border-radius: 16px;
     background: #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
 }
 
-/* JOB SECTION */
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* JOBS */
 .jobs {
-    padding: 60px 20px;
-    background: #f9f9f9;
-}
-
-.jobs h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.job-list {
-    max-width: 900px;
-    margin: auto;
+    padding: 80px 20px;
+    background: #f4f6f9;
 }
 
 .job {
     background: #fff;
-    padding: 20px;
+    padding: 25px;
     margin-bottom: 20px;
-    border-radius: 12px;
+    border-radius: 14px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.job h3 {
-    margin: 0;
-}
-
 .apply-btn {
     background: #ffcc00;
-    border: none;
     padding: 10px 20px;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
 }
 
 /* CTA */
 .cta {
     text-align: center;
-    padding: 60px 20px;
-}
-
-.cta h2 {
-    margin-bottom: 20px;
+    padding: 80px 20px;
 }
 
 .cta button {
     background: black;
     color: white;
     padding: 12px 25px;
+    border-radius: 10px;
+}
+
+/* 🔥 MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 350px;
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+.modal-box input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
     border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.modal-box button {
+    width: 100%;
+    background: #ffcc00;
+    padding: 12px;
     border: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 18px;
 }
 
 </style>
@@ -115,25 +132,14 @@
     <p>Be part of India's fastest growing ride platform</p>
 </div>
 
-<!-- WHY JOIN -->
+<!-- WHY -->
 <div class="why">
     <h2>Why Join Us?</h2>
 
     <div class="why-box">
-        <div class="card">
-            <h3>Growth 📈</h3>
-            <p>Fast career growth opportunities</p>
-        </div>
-
-        <div class="card">
-            <h3>Culture ❤️</h3>
-            <p>Friendly and innovative environment</p>
-        </div>
-
-        <div class="card">
-            <h3>Impact 🌍</h3>
-            <p>Work on real-world problems</p>
-        </div>
+        <div class="card"><h3>Growth 📈</h3></div>
+        <div class="card"><h3>Culture ❤️</h3></div>
+        <div class="card"><h3>Impact 🌍</h3></div>
     </div>
 </div>
 
@@ -141,39 +147,53 @@
 <div class="jobs">
     <h2>Open Positions</h2>
 
-    <div class="job-list">
-
-        <div class="job">
-            <div>
-                <h3>Frontend Developer</h3>
-                <p>Bangalore | Full Time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
+    <div class="job">
+        <div>
+            <h3>Frontend Developer</h3>
+            <p>Bangalore</p>
         </div>
-
-        <div class="job">
-            <div>
-                <h3>Backend Developer</h3>
-                <p>Remote | Full Time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-
-        <div class="job">
-            <div>
-                <h3>Marketing Executive</h3>
-                <p>Delhi | Full Time</p>
-            </div>
-            <button class="apply-btn">Apply</button>
-        </div>
-
+        <button class="apply-btn" onclick="openModal()">Apply</button>
     </div>
+
+    <div class="job">
+        <div>
+            <h3>Backend Developer</h3>
+            <p>Remote</p>
+        </div>
+        <button class="apply-btn" onclick="openModal()">Apply</button>
+    </div>
+
 </div>
 
 <!-- CTA -->
 <div class="cta">
     <h2>Didn't find your role?</h2>
-    <button>Send Resume</button>
+    <button onclick="openModal()">Send Resume</button>
 </div>
+
+<!-- 🔥 MODAL FORM -->
+<div class="modal" id="applyModal">
+    <div class="modal-box">
+        <span class="close" onclick="closeModal()">✖</span>
+        <h2>Apply Now</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="file" name="resume" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+function openModal(){
+    document.getElementById("applyModal").style.display = "flex";
+}
+function closeModal(){
+    document.getElementById("applyModal").style.display = "none";
+}
+</script>
 
 {% endblock %}
