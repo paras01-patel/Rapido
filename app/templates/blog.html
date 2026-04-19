@@ -24,7 +24,28 @@ body {
 
 .hero p {
     font-size: 18px;
-    color: #333;
+}
+
+/* SEARCH BAR */
+.search-box {
+    margin-top: 20px;
+}
+
+.search-box input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
+.search-box button {
+    padding: 12px 20px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
 /* CONTAINER */
@@ -48,50 +69,40 @@ body {
 .featured img {
     width: 50%;
     border-radius: 12px;
-    transition: 0.4s;
 }
 
-.featured img:hover {
-    transform: scale(1.05);
+/* CATEGORY */
+.categories {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.text h2 {
-    font-size: 30px;
-}
-
-.tag {
-    background: black;
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-
-/* BUTTON */
-.btn {
+.categories span {
     display: inline-block;
-    background: black;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    margin-top: 15px;
-    text-decoration: none;
+    background: #eee;
+    padding: 8px 18px;
+    border-radius: 20px;
+    margin: 5px;
+    cursor: pointer;
 }
 
-.btn:hover {
-    background: #333;
+.categories span:hover {
+    background: black;
+    color: white;
 }
 
 /* GRID */
-.section-title {
-    font-size: 34px;
-    text-align: center;
-}
-
 .grid {
     display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
+}
+
+/* BLOG LIST */
+.blogs {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    gap: 25px;
 }
 
 /* CARD */
@@ -100,33 +111,62 @@ body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.3s;
 }
 
 .card img {
     width: 100%;
-    height: 190px;
+    height: 180px;
     object-fit: cover;
-}
-
-.card:hover {
-    transform: translateY(-10px);
 }
 
 .card h3 {
     padding: 15px;
 }
 
-.card p {
-    padding: 0 15px 15px;
-    color: #555;
-    font-size: 14px;
-}
-
-.read-time {
+.meta {
     font-size: 12px;
     color: gray;
     padding: 0 15px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+}
+
+.trending {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* NEWSLETTER */
+.newsletter {
+    background: #fff;
+    padding: 50px;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 60px;
+}
+
+.newsletter input {
+    padding: 12px;
+    width: 250px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+}
+
+.newsletter button {
+    padding: 12px 20px;
+    background: black;
+    color: white;
+    border-radius: 25px;
+    border: none;
 }
 
 /* CTA */
@@ -135,6 +175,7 @@ body {
     color: white;
     text-align: center;
     padding: 80px;
+    margin-top: 60px;
 }
 
 .cta a {
@@ -147,11 +188,12 @@ body {
 
 /* MOBILE */
 @media(max-width:768px){
-    .featured{
+    .featured {
         flex-direction: column;
     }
-    .featured img{
-        width: 100%;
+
+    .grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -165,36 +207,68 @@ body {
 <div class="hero">
     <h1>Rapido Blog</h1>
     <p>Latest stories, updates & tips</p>
+
+    <div class="search-box">
+        <input type="text" placeholder="Search blogs...">
+        <button>Search</button>
+    </div>
 </div>
 
 <!-- FEATURED -->
 <div class="container featured">
     <img src="{% static 'img/images.png' %}">
-    <div class="text">
-        <p class="tag">Mobility</p>
+    <div>
         <h2>How Rapido is changing daily travel</h2>
-        <p>Fast, affordable and reliable rides for everyone in India.</p>
+        <p>Fast, affordable and reliable rides across India.</p>
         <a href="#" class="btn">Read More</a>
     </div>
 </div>
 
-<!-- ARTICLES -->
-<div class="container">
-    <h2 class="section-title">Latest Articles</h2>
+<!-- CATEGORY -->
+<div class="container categories">
+    <span>All</span>
+    <span>Mobility</span>
+    <span>Technology</span>
+    <span>Startup</span>
+    <span>Tips</span>
+</div>
 
-    <div class="grid">
+<!-- BLOG GRID -->
+<div class="container grid">
 
-        {% for i in "123456789" %}
+    <!-- LEFT BLOGS -->
+    <div class="blogs">
+        {% for i in "123456" %}
         <div class="card">
             <img src="{% static 'img/images.png' %}">
-            <p class="read-time">⏱ 2 min read</p>
-            <h3>Rapido Blog Title {{ forloop.counter }}</h3>
-            <p>Bike taxi is one of the fastest ways to travel in city traffic and save time daily.</p>
+            <p class="meta">By Admin • 2 min read</p>
+            <h3>Rapido Blog {{ forloop.counter }}</h3>
             <a href="#" class="btn" style="margin:15px;">Read More</a>
         </div>
         {% endfor %}
-
     </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h3>🔥 Trending</h3>
+
+        <div class="trending">Best travel tips in city</div>
+        <div class="trending">How to earn with Rapido</div>
+        <div class="trending">Bike taxi future</div>
+
+        <h3 style="margin-top:20px;">📩 Subscribe</h3>
+        <input type="email" placeholder="Email">
+        <button style="margin-top:10px;">Subscribe</button>
+    </div>
+
+</div>
+
+<!-- NEWSLETTER -->
+<div class="container newsletter">
+    <h2>Join Our Newsletter</h2>
+    <p>Get latest updates directly in your inbox</p>
+    <input type="email" placeholder="Enter email">
+    <button>Subscribe</button>
 </div>
 
 <!-- CTA -->
