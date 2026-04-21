@@ -7,107 +7,223 @@
 
 {% block css %}
 <style>
-/* About Page Container */
+
+/* GOOGLE FONT */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f4f6fb;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #FA8715, #ffb347);
+    padding: 100px 20px;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 40px 40px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* ABOUT CONTAINER */
 .about-container {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 50px auto;
     padding: 40px;
-    background-color: #ffffff;
+    background: #fff;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(250, 135, 21, 0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     text-align: center;
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Heading */
-.about-container h1 {
-    font-size: 48px;
+.about-container h2 {
+    font-size: 36px;
     color: #FA8715;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-/* Subheading */
-.about-container h3 {
-    font-size: 22px;
-    color: #333333;
-    margin-bottom: 20px;
-}
-
-/* Paragraph */
 .about-container p {
     font-size: 18px;
-    color: #555555;
+    color: #555;
     line-height: 1.7;
-    margin-bottom: 30px;
 }
 
-/* Feature Boxes */
+/* FEATURES */
 .features {
     display: flex;
     flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 40px;
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
 }
 
 .feature-box {
     flex: 1 1 250px;
-    background-color: #FAF5F0;
-    border-radius: 12px;
+    background: #fff7ef;
     padding: 25px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    transition: 0.3s;
 }
 
 .feature-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(250, 135, 21, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(250,135,21,0.2);
 }
 
 .feature-box img {
     width: 60px;
-    margin-bottom: 15px;
 }
 
 .feature-box h4 {
-    font-size: 20px;
     color: #FA8715;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-.feature-box p {
-    font-size: 16px;
-    color: #555555;
+/* STATS */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 60px 0;
+    flex-wrap: wrap;
+    gap: 20px;
 }
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 40px;
+    color: #FA8715;
+}
+
+.stat-box p {
+    color: #666;
+}
+
+/* MISSION */
+.mission {
+    background: #fff7ef;
+    padding: 40px;
+    border-radius: 16px;
+    margin-top: 40px;
+}
+
+.mission h2 {
+    color: #FA8715;
+}
+
+/* CTA */
+.cta {
+    background: linear-gradient(135deg, #FA8715, #ffb347);
+    padding: 50px;
+    text-align: center;
+    border-radius: 16px;
+    color: #fff;
+    margin-top: 50px;
+}
+
+.cta h2 {
+    font-size: 32px;
+}
+
+.cta button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: none;
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cta button:hover {
+    background: #333;
+}
+
 </style>
 {% endblock css %}
 
+
 {% block content %}
-<div class="about-container">
+
+<!-- HERO -->
+<div class="hero">
     <h1>About Rapido</h1>
-    <h3>Fast, Reliable, and Affordable Bike Rides</h3>
+    <p>India's Fastest Growing Bike Taxi Service</p>
+</div>
+
+<!-- ABOUT -->
+<div class="about-container">
+    <h2>Who We Are</h2>
     <p>
-        Rapido is India's leading bike taxi service, making daily commuting fast, safe, and convenient. 
-        With just a few taps on our app, you can book a ride, track your driver, and reach your destination quickly. 
-        Our mission is to make city travel easy, affordable, and eco-friendly.
+        Rapido is revolutionizing daily commuting by providing quick, affordable,
+        and reliable bike taxi services across India. With a strong network of
+        captains, we ensure you reach your destination safely and on time.
     </p>
 
+    <!-- FEATURES -->
     <div class="features">
         <div class="feature-box">
-            <img src="{% static 'img/fast.png' %}" alt="Fast Rides">
+            <img src="{% static 'img/fast.png' %}">
             <h4>Fast Rides</h4>
-            <p>Get to your destination quickly without waiting in traffic.</p>
+            <p>Skip traffic and reach faster.</p>
         </div>
+
         <div class="feature-box">
-            <img src="{% static 'img/safe.png' %}" alt="Safe Rides">
-            <h4>Safe & Secure</h4>
-            <p>All riders are verified, ensuring a safe travel experience.</p>
+            <img src="{% static 'img/safe.png' %}">
+            <h4>Safe Travel</h4>
+            <p>Verified riders for secure journeys.</p>
         </div>
+
         <div class="feature-box">
-            <img src="{% static 'img/affordable.png' %}" alt="Affordable">
+            <img src="{% static 'img/affordable.png' %}">
             <h4>Affordable</h4>
-            <p>Low fares make commuting accessible to everyone.</p>
+            <p>Low cost rides for everyone.</p>
         </div>
     </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat-box">
+            <h3>10M+</h3>
+            <p>Customers</p>
+        </div>
+        <div class="stat-box">
+            <h3>100+</h3>
+            <p>Cities</p>
+        </div>
+        <div class="stat-box">
+            <h3>1M+</h3>
+            <p>Captains</p>
+        </div>
+    </div>
+
+    <!-- MISSION -->
+    <div class="mission">
+        <h2>Our Mission</h2>
+        <p>
+            To make everyday travel simple, affordable, and accessible while reducing
+            traffic congestion and pollution in cities.
+        </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Start Your Ride Now 🚀</h2>
+        <p>Download the app and experience fast commuting</p>
+        <button>Book Ride</button>
+    </div>
+
 </div>
+
 {% endblock content %}
